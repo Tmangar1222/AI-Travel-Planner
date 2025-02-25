@@ -1,0 +1,23 @@
+.header-logo {
+    width: 60px; 
+    height: auto;
+}
+
+@media (max-width: 600px) {
+    .header-logo {
+        width: 30px; 
+    }
+}
+
+.sign-in-button {
+    background-color: darkred; /* Red background for the button */
+    color: white; /* White text color for contrast */
+    padding: 10px 20px; /* Padding for better visual appearance */
+    border: none; /* No border unless desired */
+    border-radius: 5px; /* Optional: rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.sign-in-button:hover {
+    background-color: #450202; /* Slightly darker red on hover for visual feedback */
+}

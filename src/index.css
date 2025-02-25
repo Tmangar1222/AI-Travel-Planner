@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/* @custom-variant dark (&:is(.dark *));
+@import "tailwindcss/utilities";
+@import "tailwindcss/components";
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+} */
+
