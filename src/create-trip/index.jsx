@@ -58,7 +58,11 @@ function CreateTrip() {
           {SelectBudgetOptions.map((item, index) => (
             <div key={index} 
             onClick={() => handleInputChange('budget', item.title)}
-            className='p-4 border border-red-700 bg-red-800/20 rounded-lg transition-all duration-300 transform hover:bg-red-900 hover:scale-105 hover:shadow-lg hover:shadow-red-700/50 text-white cursor-pointer'>
+            className={`p-4 border border-red-700 bg-red-800/20 rounded-lg transition-all duration-300 
+            transform hover:bg-red-900 hover:scale-105 hover:shadow-lg hover:shadow-red-700/50 text-white 
+            cursor-pointer
+            ${formData?.budget === item.title&&'bg-red-900'}
+            `}>
             <h2 className='text-4xl'>{item.icon}</h2>
             <h2 className='font-bold text-xl'>{item.title}</h2>
             <h2 className='text-sm text-gray-500'>{item.desc}</h2>
@@ -73,7 +77,11 @@ function CreateTrip() {
           {SelectTravelersList.map((item, index) => (
             <div key={index} 
             onClick={() => handleInputChange('traveler', item.people)}
-            className='p-4 border border-red-700 bg-red-800/20 rounded-lg transition-all duration-300 transform hover:bg-red-900 hover:scale-105 hover:shadow-lg hover:shadow-red-700/50 text-white cursor-pointer'>
+            className={`p-4 border border-red-700 bg-red-800/20 rounded-lg transition-all duration-300 
+            transform hover:bg-red-900 hover:scale-105 hover:shadow-lg hover:shadow-red-700/50 
+            text-white cursor-pointer
+            ${formData?.traveler === item.people&&'bg-red-900'}
+            `}>
             <h2 className='text-4xl'>{item.icon}</h2>
             <h2 className='font-bold text-xl'>{item.title}</h2>
             <h2 className='text-sm text-gray-500'>{item.desc}</h2>
