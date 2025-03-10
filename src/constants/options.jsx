@@ -52,3 +52,5 @@ export const SelectBudgetOptions = [
         range: '$$$$'
     }
 ];
+
+export const AI_PROMPT = `Generate a personalized travel plan for: Location: {location}, Duration: {totalday} days, Traveler Type: {traveler}, Budget: {budget}. Provide a list of hotels with: Hotel Name, Hotel Address, Price, Hotel Image URL, Geo Coordinates (Latitude, Longitude), Rating, Description. Suggested itinerary for {totalday} days should include: Place Name, Place Details, Place Image URL, Geo Coordinates, Ticket Pricing, Rating, Estimated Travel Time, and Best Time to Visit. Return the data in JSON format for API integration.`;
