@@ -5,11 +5,25 @@ import { chatSession } from '@/service/AIModel';
 import React, { useEffect, useState } from 'react';
 import ReactGoogleAutocomplete from 'react-google-autocomplete';
 import { toast } from "sonner"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { FcGoogle } from "react-icons/fc";
+import { useGoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
+
 
 
 function CreateTrip() {
   // State to hold form dataSS
   const [formData, setFormData] = useState({});
+
+  const [opendialog, setOpendialog] = useState(false);
 
   const handleInputChange = (name, value) => {
     setFormData({
@@ -22,7 +36,21 @@ function CreateTrip() {
     console.log(formData);
   }, [formData]);
 
+  const login = useGoogleLogin({
+    onSuccess: (codeResp) => GetUserProfile(codeResp),
+    onFailure: (error) => console.log(error)
+
+  })
+
   const onGenerateTrip = async() => {
+
+    const user = localStorage.getItem('user');
+    if (!user) {
+      setOpendialog(true);
+      return;
+    }
+
+
     if (formData.noOfDays > 5 && !formData?.location || !formData?.budget || !formData?.traveler) {
        toast ('Please fill in all the fields to generate a trip.', 'error');
       return;
@@ -41,6 +69,21 @@ function CreateTrip() {
     console.log(result?.response?.text());
 
   };
+
+  const GetUserProfile = (tokenInfo) => {
+    axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${tokenInfo?.access_token}`, {
+        headers: {
+          Authorization: `Bearer ${tokenInfo?.access_token}`,
+          Accept: "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        localStorage.setItem('user', JSON.stringify(response.data));
+        setOpendialog(false);
+        onGenerateTrip();
+      })
+  }
 
   return (
     <div className="sm:px-10 md:px-32 lg:px-56 xl:px-72 px-5 mt-10 text-left">
@@ -138,7 +181,29 @@ function CreateTrip() {
           ✈️ Create Trip
         </button>
       </div>
+
+          <Dialog open={opendialog}>
+      <DialogContent className="bg-gray-100 text-gray-800 rounded-lg shadow-md p-6">
+        <DialogHeader>
+        <DialogDescription className="flex flex-col items-center text-center">
+        <img src="logo.svg" className="w-16 h-16" alt="Logo" /> {/* Adjust width and height */}
+        <h2 className="font-bold text-lg mt-5">Sign in with Google</h2>
+        <p className="text-gray-600 text-sm mt-2">Sign into the app with Google authentication securely</p>
+      
+        <button onClick={login}
+          className="mt-5 w-full px-6 py-3 bg-gray-700 text-white rounded-md font-medium flex items-center 
+          justify-center gap-2 hover:bg-gray-900 transition-all duration-300 shadow-md"
+        >
+          <FcGoogle className="text-xl" /> Sign in with Google
+        </button>
+
+      </DialogDescription>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
+
     </div>
+
   );
 }
 
