@@ -22,7 +22,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
         {
           role: "user",
           parts: [
-            {text: "`Generate a personalized travel plan for: Location: New York, Duration: 3 days, Traveler Type: 1, Budget: budget. Provide a list of hotels with: Hotel Name, Hotel Address, Price, Hotel Image URL, Geo Coordinates (Latitude, Longitude), Rating, Description. Suggested itinerary for 3 days should include: Place Name, Place Details, Place Image URL, Geo Coordinates, Ticket Pricing, Rating, Estimated Travel Time, and Best Time to Visit. Return the data in JSON format for API integration.`;\n"},
+            {text: "`Generate a personalized travel plan for: Location: New York, Duration: 3 days, Traveler Type: 1, Budget: budget. Provide a list of hotels with: Hotel Name, Hotel Address, Price, Hotel Image URL, Geo Coordinates (Latitude, Longitude), Rating, Description. Suggested itinerary for 3 days should include: Place Name, Place Details, Place Image URL, Address, Ticket Pricing, Rating, Estimated Travel Time, and Time to vist, with aleast 5 options each day. Return the data in JSON format for API integration.`;\n"},
           ],
         },
         {
