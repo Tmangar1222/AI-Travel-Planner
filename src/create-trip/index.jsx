@@ -19,6 +19,7 @@ import axios from 'axios';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '@/service/firebaseConfig';
 import { AiOutlineLoading } from "react-icons/ai";
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -29,6 +30,8 @@ function CreateTrip() {
   const [opendialog, setOpendialog] = useState(false);
 
   const [loading, setLoading] = useState(false);
+
+  const navigate=useNavigate();
 
   const handleInputChange = (name, value) => {
     setFormData({
@@ -97,6 +100,7 @@ function CreateTrip() {
   });
 
   setLoading(false);
+  navigate('/view-trip/'+docId)
 };
 
 
