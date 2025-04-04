@@ -1,8 +1,8 @@
-🌍 AI Travel Planner
+#🌍 AI Travel Planner
 Plan your perfect trip effortlessly using the power of AI and Google Maps. Simply choose your destination, preferences, and let our app create a full personalized itinerary — complete with activities, hotels, and a stunning visual layout.
 
 
-✨ Features
+##✨ Features
 🔐 Secure Google Authentication
 
 🧠 AI-Powered Itinerary Generation
@@ -19,7 +19,7 @@ Plan your perfect trip effortlessly using the power of AI and Google Maps. Simpl
 
 💾 Save & View Trips in Firestore
 
-🛠 Tech Stack
+##🛠 Tech Stack
 Frontend: React + TailwindCSS + Vite
 
 AI Integration: OpenAI API (chat-based planning)
